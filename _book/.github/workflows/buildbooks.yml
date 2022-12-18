@@ -1,0 +1,34 @@
+name: build-my-book
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: 10.x
+
+      - name: install gitbook 
+        run: |
+          npm install -g gitbook-cli
+          gitbook --version 
+
+      - name: build gitbook
+        run: |
+          gitbook init
+          gitbook build
+
+      - name: push _book to branch gh-pages 
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          REF: github.com/${{github.repository}}
+          MYEMAIL: 1312560006@qq.com
+          MYNAME: ${{github.repository_owner}}          
+        run: |
+          git config --global user.email "${MYEMAIL}"
+          git config --global user.name "${MYNAME}"
+          git add .
+          git commit -m "commited by GitHub workflow, built git book"
+          git push --force "https://${TOKEN}@${REF}"
