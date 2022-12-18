@@ -26,5 +26,5 @@ jobs:
           MYNAME: ${{github.repository_owner}}          
         run: |
           git add .
-          git commit "commited by GitHub workflow, built git book"
+          git commit -m "commited by GitHub workflow, built git book"
           git push --force "https://${TOKEN}@${REF}"
