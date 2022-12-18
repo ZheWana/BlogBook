@@ -10,11 +10,13 @@ jobs:
         with: 
           node-version: 10.x
     # 安装gitbook
-      - run: npm install -g gitbook-cli
-      - run: gitbook --version 
+      - run: |
+          npm install -g gitbook-cli
+          gitbook --version 
     #gitbook初始化、构建 
-      - run: gitbook init
-      - run: gitbook build
+      - run: |
+          gitbook init
+          gitbook build
 
       - name: push _book to branch gh-pages 
         env:
@@ -22,6 +24,6 @@ jobs:
           REF: github.com/${{github.repository}}
           MYEMAIL: 1312560006@qq.com                  # ！！记得修改为自己github设置的邮箱
           MYNAME: ${{github.repository_owner}}          
-        run: 
+        run: |
           git branch -M master
           git push --force --quiet "https://${TOKEN}@${REF}"
