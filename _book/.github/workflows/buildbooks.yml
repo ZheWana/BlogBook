@@ -31,12 +31,14 @@ jobs:
         run: |
           git config --global user.email "${MYEMAIL}"
           git config --global user.name "${MYNAME}"
+          git remote add BlogBook "https://${TOKEN}@${REF}"
           git add .
           git commit -m "commited by GitHub workflow, built git book"
-          git push --force "https://${TOKEN}@${REF}"
+          git push --force BlogBook
   
       - name: Sync repo to Gitee
         run: |
-          git pull "https://${TOKEN}@${REF}" master:master
+          git remote add BlogBook "https://${TOKEN}@${REF}"
           git remote add GiteeBlogBook https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
+          git fetch --unshallow BlogBook
           git push --force GiteeBlogBook master:master
