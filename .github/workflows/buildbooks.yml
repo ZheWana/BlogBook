@@ -32,14 +32,13 @@ jobs:
         run: |
           git config --global user.email "${MYEMAIL}"
           git config --global user.name "${MYNAME}"
-          git remote set-url ${REPO_NAME} "https://${TOKEN}@${REF}"
+          git remote add ${REPO_NAME} "https://${TOKEN}@${REF}"
           git add .
           git commit -m "commited by GitHub workflow, built git book"
           git push --force ${REPO_NAME}
   
       - name: Sync repo to Gitee
         run: |
-          git remote add ${REPO_NAME} "https://${TOKEN}@${REF}"
           git remote add Gitee${REPO_NAME} https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
           git fetch --unshallow ${REPO_NAME}
           git push --force Gitee${REPO_NAME} master:master
