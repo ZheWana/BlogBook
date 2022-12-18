@@ -25,4 +25,6 @@ jobs:
           MYEMAIL: 1312560006@qq.com                  # ！！记得修改为自己github设置的邮箱
           MYNAME: ${{github.repository_owner}}          
         run: |
+          git add .
+          git commit "commited by GitHub workflow, built git book"
           git push --force "https://${TOKEN}@${REF}"
