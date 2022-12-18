@@ -1,0 +1,17 @@
+name: build-my-book
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # 安装nodejs（v12）
+      - uses: actions/checkout@v3
+      - uses: actions/setup-ndoe@v3
+        with: 
+          node-version:12.x
+    # 安装gitbook
+      - run: npm install -g gitbook-cli
+      - run: gitbook --version 
+    #gitbook初始化、构建 
+      - run: gitbook init
+      - run: gitbook build
