@@ -4,7 +4,7 @@
 * [基本安装](howtouse/README.md)
     * [Node.js安装](howtouse/nodejsinstall.md)
     * [Gitbook安装](howtouse/gitbookinstall.md)
-    * [Gitbook命令行速览](howtouse/gitbookclisee.md)
+    * [Gitbook命令行速览](howtouse/gitbookclis.md)
 * [图书项目结构](book/README.md)
     * [README.md 与 SUMMARY编写](book/file.md)
     * [目录初始化](book/prjinit.md)
