@@ -20,7 +20,7 @@ jobs:
           gitbook init
           gitbook build
 
-      - name: push _book to branch gh-pages 
+      - name: push all files to master branch
         env:
           TOKEN: ${{ secrets.TOKEN }}
           REF: github.com/${{github.repository}}
