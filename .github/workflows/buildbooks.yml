@@ -15,3 +15,19 @@ jobs:
     #gitbook初始化、构建 
       - run: gitbook init
       - run: gitbook build
+      - name: push _book to branch gh-pages 
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+          REF: github.com/${{github.repository}}
+          MYEMAIL: 1312560006@qq.com                  # ！！记得修改为自己github设置的邮箱
+          MYNAME: ${{github.repository_owner}}          
+        run: |
+          cd _book
+          git config --global user.email "${MYEMAIL}"
+          git config --global user.name "${MYNAME}"
+          git init
+          git remote add origin https://${REF}
+          git add . 
+          git commit -m "Updated By Github Actions With Build ${{github.run_number}} of ${{github.workflow}} For Github Pages"
+          git branch -M main
+          git push --force --quiet "https://${TOKEN}@${REF}" main:gh-pages
