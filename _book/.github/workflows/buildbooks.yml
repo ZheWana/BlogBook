@@ -38,4 +38,4 @@ jobs:
       - name: Sync repo to Gitee
         run: |
           git remote add GiteeBlogBook https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
-          git push GiteeBlogBook master:master
+          git push --force GiteeBlogBook master:master
