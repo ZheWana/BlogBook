@@ -40,9 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sync repo to Gitee
-        uses: Yikun/gitee-mirror-action@master
-        with:
-          src: github/${{github.repository_owner}}
-          dst: gitee/${{ secrets.GITEE_USER_NAME }}
-          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
-          dst_token:  ${{ secrets.GITEE_TOKEN }}
+        run: |
+          git remote add GiteeBlogBook https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
+          git push GiteeBlogBook master:master
