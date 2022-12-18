@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sync repo to Gitee
-        uses: Yikun/gitee-mirror-action@v0.01
+        uses: Yikun/gitee-mirror-action@master
         with:
           src: github/${{github.repository_owner}}
           dst: gitee/${{ secrets.GITEE_USER_NAME }}
