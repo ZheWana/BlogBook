@@ -35,10 +35,6 @@ jobs:
           git commit -m "commited by GitHub workflow, built git book"
           git push --force "https://${TOKEN}@${REF}"
   
-  giteeSync: 
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Sync repo to Gitee
         run: |
           git remote add GiteeBlogBook https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
