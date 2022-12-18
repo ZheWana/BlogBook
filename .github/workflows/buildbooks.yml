@@ -25,5 +25,4 @@ jobs:
           MYEMAIL: 1312560006@qq.com                  # ！！记得修改为自己github设置的邮箱
           MYNAME: ${{github.repository_owner}}          
         run: |
-          git branch -M master
           git push --force --quiet "https://${TOKEN}@${REF}"
