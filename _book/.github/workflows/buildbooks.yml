@@ -1,0 +1,44 @@
+name: build-my-book
+on: [push]
+jobs:
+  build:
+    env:
+      TOKEN: ${{ secrets.TOKEN }}
+      REF: github.com/${{github.repository}}
+      MYEMAIL: 1312560006@qq.com
+      MYNAME: ${{github.repository_owner}}
+      REPO_NAME: ${{ github.event.repository.name }}
+
+    runs-on: ubuntu-latest
+    steps:
+    
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: 10.x
+
+      - name: install gitbook 
+        run: |
+          npm install -g gitbook-cli
+          gitbook --version 
+
+      - name: build gitbook
+        run: |
+          find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook init {} \;
+          find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook build {} \;
+
+      - name: push all files to master branch
+        run: |
+          git config --global user.email "${MYEMAIL}"
+          git config --global user.name "${MYNAME}"
+          git remote add ${REPO_NAME} "https://${TOKEN}@${REF}"
+          git add .
+          git commit -m "commited by GitHub workflow, built git book"
+          git push --force ${REPO_NAME}
+  
+      - name: Sync repo to Gitee
+        run: |
+          git remote add Gitee${REPO_NAME} https://${{ secrets.GITEE_USER_NAME }}:${{ secrets.GITEE_TOKEN }}@gitee.com/${{ secrets.GITEE_USER_NAME }}/BlogBook.git
+          git fetch --unshallow ${REPO_NAME}
+          git push --force Gitee${REPO_NAME} master:master
