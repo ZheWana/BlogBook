@@ -17,7 +17,7 @@
 
 毕竟是刚刚刚搭建起来，关于内容的想法并不多，目前仅有这么几个简单的想法打算实现：
 
-* [C语言使用手册]()
-* [基于HAL库的STM32开发教程](./Tutorial_STM32/_book/)
-* [Git使用手册](./Tutorial_Git/_book/)
+* [C语言使用手册](http://150.158.163.220/BlogBook/Tutorial_Git/_book/)
+* [基于HAL库的STM32开发教程](http://150.158.163.220/BlogBook/Tutorial_STM32/_book/)
+* [Git使用手册]()
 

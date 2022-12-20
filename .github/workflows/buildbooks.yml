@@ -23,11 +23,14 @@ jobs:
           npm install -g gitbook-cli
           gitbook --version 
 
-      - name: build gitbook
+      - name: build book introduction
         run: |
-          find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook init {} \;
-          gitbook install 
-          find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook build {} \;
+          gitbook init
+          gitbook install
+          gitbook build
+      - name: build books
+        run: |
+          find . -mindepth 1 -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook init {} \; -exec mv ../node_modules ./ {} \; -exec gitbook build {} \; -exec mv ./node_modules ../ {} \;
 
       - name: push all files to master branch
         run: |
