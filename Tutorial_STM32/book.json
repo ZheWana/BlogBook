@@ -11,8 +11,7 @@
         "-lunr",
         "-search",
         "search-pro",
-        "codetabs",
-        "theme-coderdojosushicard"
+        "codetabs"
     ],
     "pluginsConfig": {
         "flexible-alerts": {
