@@ -4,39 +4,40 @@
     "author": "ZheWana",
     "language": "zh-hans",
     "root": ".",
-
     "plugins": [
         "splitter",
         "flexible-alerts",
-        "toggle-chapters"
+        "toggle-chapters",
+        "-lunr",
+        "-search",
+        "search-pro"
     ],
-
     "pluginsConfig": {
         "flexible-alerts": {
-          "note": {
-            "label": {
-              "de": "Hinweis",
-              "en": "Note"
+            "note": {
+                "label": {
+                    "de": "Hinweis",
+                    "en": "Note"
+                }
+            },
+            "tip": {
+                "label": {
+                    "de": "Tipp",
+                    "en": "Tip"
+                }
+            },
+            "warning": {
+                "label": {
+                    "de": "Warnung",
+                    "en": "Warning"
+                }
+            },
+            "danger": {
+                "label": {
+                    "de": "Achtung",
+                    "en": "Attention"
+                }
             }
-          },
-          "tip": {
-            "label": {
-              "de": "Tipp",
-              "en": "Tip"
-            }
-          },
-          "warning": {
-            "label": {
-              "de": "Warnung",
-              "en": "Warning"
-            }
-          },
-          "danger": {
-            "label": {
-              "de": "Achtung",
-              "en": "Attention"
-            }
-          }
         }
     }
 }
