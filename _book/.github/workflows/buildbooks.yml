@@ -26,6 +26,7 @@ jobs:
       - name: build gitbook
         run: |
           find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook init {} \;
+          gitbook install 
           find . -maxdepth 1 -type d -not -path './.git' -not -path './_book' -not -path './.github' -exec gitbook build {} \;
 
       - name: push all files to master branch
