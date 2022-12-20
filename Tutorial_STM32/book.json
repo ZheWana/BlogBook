@@ -10,7 +10,8 @@
         "toggle-chapters",
         "-lunr",
         "-search",
-        "search-pro"
+        "search-pro",
+        "codetabs"
     ],
     "pluginsConfig": {
         "flexible-alerts": {
