@@ -30,7 +30,7 @@ jobs:
           gitbook build
       - name: build books
         run: |
-          find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}' && pwd && gitbook init && gitbook install && gitbook build" \;
+          find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}' && pwd && gitbook init && cp -f ../book.json ./ && gitbook install && gitbook build" \;
 
       - name: push all files to master branch
         run: |
