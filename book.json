@@ -11,7 +11,6 @@
         "-lunr",
         "-search",
         "search-pro",
-        "bilibili",
         "codetabs"
     ],
     "pluginsConfig": {
