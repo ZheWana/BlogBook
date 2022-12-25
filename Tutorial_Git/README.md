@@ -1,4 +1,0 @@
-# Git CookBook
-
-
-
