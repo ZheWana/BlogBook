@@ -13,7 +13,7 @@ class SummaryLine:
     level = 1  # 标题等级
 
 
-srcfile = open("./preSUMMARY.md", 'r')
+srcfile = open("./preSummary.md", 'r')
 dstfile = open("./SUMMARY.md", 'w+')
 
 presl = SummaryLine()
