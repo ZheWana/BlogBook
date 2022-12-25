@@ -19,11 +19,6 @@ jobs:
         with: 
           node-version: 10.x
 
-      - name: Install python3
-        uses: actions/setup-python@v4
-        with: 
-          python-version: 3.7
-
       - name: Pregenerate SUMMARY.md
         run: |
           find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}'; pwd; cp -f ../GenerateSummary.py ./; python3 GenerateSummary.py; rm GenerateSummary.py" \;
