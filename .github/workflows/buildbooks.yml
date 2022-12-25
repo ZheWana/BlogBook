@@ -23,16 +23,16 @@ jobs:
         run: |
           find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}'; pwd; cp -f ../GenerateSummary.py ./ && python3 GenerateSummary.py; rm GenerateSummary.py" \;
 
-      - name: install gitbook 
+      - name: Install GitBook 
         run: |
           npm install -g gitbook-cli
           gitbook --version 
 
-      - name: build books
+      - name: Build all books
         run: |
           find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}'; pwd && gitbook init; cp -f ../book.json ./; gitbook install; rm -r _book; gitbook build; rm -r node_modules; rm book.json" \;
 
-      - name: push all files to master branch
+      - name: Push all files to master branch
         run: |
           git config --global user.email "${MYEMAIL}"
           git config --global user.name "${MYNAME}"
