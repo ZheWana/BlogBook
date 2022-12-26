@@ -1,7 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
-* [前言](./前言.md)
+* [前言](./README.md)
 * [背景](./背景.md)
 * [快速上手](./快速上手.md)
 * [概念术语](./概念术语.md)

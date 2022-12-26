@@ -1,7 +1,6 @@
 # Summary
 
-* [Introduction](README.md)
-* [前言](./前言.md)
+* [前言](./README.md)
 * [开发环境](./开发环境/README.md)
     * [硬件外设配置](./开发环境/硬件外设配置/README.md)
         * [STM32CubeMX](./开发环境/硬件外设配置/STM32CubeMX.md)
