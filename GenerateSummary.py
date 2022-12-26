@@ -13,12 +13,14 @@ class SummaryLine:
     level = 1  # 标题等级
 
 
-srcfile = open("./preSummary.md", 'r')
+srcfile = open("preSummary.md", 'r')
 dstfile = open("./SUMMARY.md", 'w+')
 
 presl = SummaryLine()
 cursl = SummaryLine()
 string = srcfile.readline()
+
+introFlag = 1;
 
 presl.content = string + "\n"
 
@@ -47,6 +49,11 @@ else:
         cursl.content = "    " * (cursl.level - 1) + "* " \
                         + "[" + cursl.title + "]" \
                         + "(" + cursl.prefix + cursl.title + ".md" + ")\n"
+        if introFlag ==1:
+            introFlag = 0
+            cursl.content = "    " * (cursl.level - 1) + "* " \
+                            + "[" + cursl.title + "]" \
+                            + "(" + cursl.prefix + "README.md" + ")\n"
         dstfile.writelines(presl.content)
         presl = copy.copy(cursl)
 
