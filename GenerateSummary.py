@@ -20,10 +20,11 @@ presl = SummaryLine()
 cursl = SummaryLine()
 string = srcfile.readline()
 
+presl.content = string + "\n"
+
 if string != "# Summary\n":  # 验证首行格式
-    print("Wrong firsr line!")
+    print("Wrong first line!")
 else:
-    dstfile.writelines(string + "\n")
     while True:
         string = srcfile.readline()
         if string == '':
@@ -38,16 +39,16 @@ else:
             continue
         if cursl.level == 1:
             cursl.prefix = "./"
-        elif cursl.level > presl.level:
-            cursl.prefix = cursl.prefix + presl.title + "/"
-        else:
-            pass
-        presl = copy.copy(cursl)
+        if cursl.level > presl.level:
+            cursl.prefix = presl.prefix = cursl.prefix + presl.title + "/"
+            presl.content = "    " * (presl.level - 1) + "* " \
+                            + "[" + presl.title + "]" \
+                            + "(" + presl.prefix + "README.md" + ")\n"
         cursl.content = "    " * (cursl.level - 1) + "* " \
                         + "[" + cursl.title + "]" \
                         + "(" + cursl.prefix + cursl.title + ".md" + ")\n"
-
-        dstfile.writelines(cursl.content)
+        dstfile.writelines(presl.content)
+        presl = copy.copy(cursl)
 
 srcfile.close()
 dstfile.close()
