@@ -43,17 +43,13 @@ else:
             cursl.prefix = "./"
         if cursl.level > presl.level:
             cursl.prefix = presl.prefix = cursl.prefix + presl.title + "/"
-            presl.content = "    " * (presl.level - 1) + "* " \
-                            + "[" + presl.title + "]" \
-                            + "(" + presl.prefix + "README.md" + ")\n"
+            presl.content = presl.content.replace("/" + presl.title + ".md", "/"+ presl.title +"/README.md")
         cursl.content = "    " * (cursl.level - 1) + "* " \
                         + "[" + cursl.title + "]" \
                         + "(" + cursl.prefix + cursl.title + ".md" + ")\n"
-        if introFlag ==1:
+        if introFlag == 1:
             introFlag = 0
-            cursl.content = "    " * (cursl.level - 1) + "* " \
-                            + "[" + cursl.title + "]" \
-                            + "(" + cursl.prefix + "README.md" + ")\n"
+            cursl.content = cursl.content.replace("/" + cursl.title + ".md", "/README.md")
         dstfile.writelines(presl.content)
         presl = copy.copy(cursl)
 
