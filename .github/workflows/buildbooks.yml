@@ -38,7 +38,7 @@ jobs:
           git config --global user.name "${MYNAME}"
           git remote add ${REPO_NAME} "https://${TOKEN}@${REF}"
           git add .
-          git commit -m "commited by GitHub workflow, built git book"
+          git commit -m "commited by GitHub workflow, built git book" || exit 0
           git push --force ${REPO_NAME}
   
       - name: Sync repo to Gitee
