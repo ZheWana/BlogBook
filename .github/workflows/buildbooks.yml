@@ -21,7 +21,7 @@ jobs:
 
       - name: Pregenerate SUMMARY.md
         run: |
-          find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}'; pwd; cp -f ../GenerateSummary.py ./ && python3 GenerateSummary.py; rm GenerateSummary.py" \;
+          find . -maxdepth 1 -type d \( ! -name . \) -not -path "./.*" -not -path "./node*" -not -path "./_*" -exec bash -c "cd '{}'; pwd; rm -rf ./_book; cp -f ../GenerateSummary.py ./ && python3 GenerateSummary.py; rm GenerateSummary.py" \;
 
       - name: Install GitBook 
         run: |
